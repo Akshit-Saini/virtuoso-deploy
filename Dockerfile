@@ -1,17 +1,16 @@
 FROM openlink/virtuoso-opensource-7
 
+# Set environment variables
 ENV DBA_PASSWORD=dba
 ENV VIRT_HTTP_PORT=8890
 ENV VIRT_ISQL_PORT=1111
 
-# Copy RDF data files
+# Copy RDF data files and config
 COPY data/*.nt /opt/virtuoso/database/
-
-# Copy the customized ini file with CORS headers (required for Vercel)
 COPY virtuoso.ini /opt/virtuoso/database/virtuoso.ini
 
-# Expose HTTP and ISQL ports
+# Expose SPARQL and HTTP endpoints
 EXPOSE 8890 1111
 
-# Start Virtuoso server
+# Start Virtuoso
 CMD ["/virtuoso-entrypoint.sh"]

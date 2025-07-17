@@ -5,7 +5,7 @@ ENV VIRT_HTTP_PORT=8890
 ENV VIRT_ISQL_PORT=1111
 
 # Copy RDF data files
-COPY ./data/*.nt /opt/virtuoso/database/
+COPY data/*.nt /opt/virtuoso/database/
 
 # Copy the customized ini file with CORS headers (required for Vercel)
 COPY virtuoso.ini /opt/virtuoso/database/virtuoso.ini
